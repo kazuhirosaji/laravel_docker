@@ -18,16 +18,27 @@ ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
 # Install laravel installer
-RUN composer global require "laravel/installer"
+# RUN composer create-project --prefer-dist laravel/laravel todolist
 
 # PHP's DB setting
 RUN apt-get update \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_mysql pdo_pgsql
 
-# Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
-    && apt-get update \
-    && apt-get install -y nodejs
 
-WORKDIR /src
+# Install yum
+RUN apt-get install libpng-dev
+
+# Install Node.js
+RUN apt-get update -y
+RUN apt-get install -y curl git
+RUN apt-get install -y gnupg2
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash --
+RUN apt-get install -y nodejs
+RUN npm update -g npm
+RUN npm cache clean --force
+RUN npm i -g n
+RUN n stable
+RUN apt-get purge -y nodejs npm
+
+WORKDIR /src/todolist
