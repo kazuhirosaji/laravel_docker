@@ -41,4 +41,7 @@ RUN npm i -g n
 RUN n stable
 RUN apt-get purge -y nodejs npm
 
+# Install pusher
+RUN composer require pusher/pusher-php-server
+
 WORKDIR /src/todolist
