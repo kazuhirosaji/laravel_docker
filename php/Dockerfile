@@ -17,16 +17,13 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
-# Install laravel installer
-# RUN composer create-project --prefer-dist laravel/laravel todolist
-
 # PHP's DB setting
 RUN apt-get update \
     && apt-get install -y libpq-dev \
     && docker-php-ext-install pdo_mysql pdo_pgsql
 
 
-# Install yum
+# 失敗する場合は、docker-compose exec php bash を実行後にapt-get install libpng-devを実行
 RUN apt-get install libpng-dev
 
 # Install Node.js
