@@ -2,6 +2,7 @@
 
 - 本リポジトリをgit cloneして取得
 - ./setup.sh を実行してtodolistのリポジトリを取得
+- src/todolist/.env ファイルを開き、APP_KEY、PUSHER_APP_KEY、PUSHER_APP_SECRETを入力する（こちらは後でもOK）
 - docker-compose buildを実行
 - docker-compose upを実行
 - もう一つのコンソールを立ち上げる

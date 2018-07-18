@@ -24,7 +24,8 @@ RUN apt-get update \
 
 
 # 失敗する場合は、docker-compose exec php bash を実行後にapt-get install libpng-devを実行
-RUN apt-get install libpng-dev
+RUN apt-get update && apt-get install -y \
+    libpng-dev
 
 # Install Node.js
 RUN apt-get update -y
@@ -37,6 +38,7 @@ RUN npm cache clean --force
 RUN npm i -g n
 RUN n stable
 RUN apt-get purge -y nodejs npm
+RUN npm install
 
 # Install pusher
 RUN composer require pusher/pusher-php-server
